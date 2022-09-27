@@ -2,39 +2,62 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import dayjs from "dayjs";
+import Layout from "../components/Layout";
+import EventDetail from "../components/EventDetail";
 
 interface EventData {
+  name: string;
   start: string;
   end: string;
   host: string;
   location: string;
+  image: string;
 }
 
 const Event: NextPage = () => {
   const router = useRouter();
   const data: EventData = router.query;
 
+  const getReadableDate = (date: string) => dayjs(date).format("D MMMM h:m A");
+
   console.log(data);
 
   return (
-    <div>
-      <Head>
-        <title>Event - Binvited</title>
-        <meta name="description" content="The next best thing since Envited" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout title={data.name} description={`${getReadableDate(data.start)} | Hosted by ${data.host}`}>
+      <main className="block bg-[#FBFAFF]">
+        {data.image ? (
+          <img src={data.image} className="object-cover w-full aspect-square" />
+        ) : (
+          <img src="/cake.png" className="w-full aspect-square" />
+        )}
 
-      <main className="flex flex-col items-center justify-center h-screen px-9 gap-9 bg-gradient-to-b from-secondary-purple-3 to-secondary-purple-2">
-        <div className="w-full aspect-square" />
-        <div>
-          <h1>Birthday Bash</h1>
-          <p>Hosted by {data.host}</p>
+        <div className="flex flex-col px-5 py-3 gap-8">
+          <div className="flex flex-col gap-1">
+            <h1 className="font-bold text-3xl text-primary-text-purple-dark">{data.name}</h1>
+            <h2 className="text-[#828282]">
+              Hosted by <span className="font-bold">{data.host}</span>
+            </h2>
+          </div>
 
-          <p>{dayjs(data.start).format("D MMMM h:m A")}</p>
-          <p>to {dayjs(data.end).format("D MMMM h:m A")} UTC +10</p>
+          <div className="flex flex-col gap-4">
+            <EventDetail
+              iconSrc="/calendar.svg"
+              label={getReadableDate(data.start)}
+              children={
+                <p className="text-[#4F4F4F] text-sm">
+                  to <span className="font-bold">{getReadableDate(data.end)}</span> UTC +10
+                </p>
+              }
+            />
+            <EventDetail
+              iconSrc="/location.svg"
+              label={data.location ? data.location : "No location provided"}
+              caption="Suburb, state, postcode"
+            />
+          </div>
         </div>
       </main>
-    </div>
+    </Layout>
   );
 };
 
