@@ -18,10 +18,15 @@ const Home: NextPage = () => (
           had events.
         </h1>
         <p className="font-light text-center">
-          Easily host and share events with your friends across any social media.
+          Easily host and share events with your friends across any social
+          media.
         </p>
       </div>
-      <img src="/app.svg" className="w-40" alt="Screenshot of the Binvited app" />
+      <img
+        src="/app.svg"
+        className="w-40"
+        alt="Screenshot of the Binvited app"
+      />
 
       <Link href="/create" passHref>
         <Button label="🎉 Create my event" />

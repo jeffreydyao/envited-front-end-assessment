@@ -17,9 +17,12 @@ const Create: NextPage = () => {
   }, [startDate, endDate, host, location]);
 
   return (
-    <Layout title="New Event | Bnvited" description="Create a new event with Binvited">
+    <Layout
+      title="New Event | Bnvited"
+      description="Create a new event with Binvited"
+    >
       <div className="bg-[#DFD6F3] w-screen h-screen">
-        {imageURL ? (
+        {!imageURL ? (
           <input
             type="file"
             onChange={(e) => {
@@ -28,7 +31,10 @@ const Create: NextPage = () => {
             className="absolute top-6"
           />
         ) : (
-          <img src={imageURL} className="object-cover absolute top-0 w-screen" />
+          <img
+            src={imageURL}
+            className="object-cover absolute top-0 w-screen"
+          />
         )}
 
         <div className="px-6 py-8 flex flex-col gap-12 absolute bottom-0 h-max bg-[#F8F5FF] rounded-t-3xl">
@@ -49,7 +55,9 @@ const Create: NextPage = () => {
 
           <div className="flex flex-col gap-8">
             <div className="w-full px-4 items-center py-3 bg-[#F1EDF9] flex justify-between rounded-xl">
-              <label className="text-sm text-medium text-primary-text-purple-light">starts</label>
+              <label className="text-sm text-medium text-primary-text-purple-light">
+                starts
+              </label>
               <input
                 type="datetime-local"
                 className="bg-transparent text-medium text-primary-text-purple-dark"
@@ -57,7 +65,9 @@ const Create: NextPage = () => {
               />
             </div>
             <div className="w-full px-4 items-center py-3 bg-[#F1EDF9] flex justify-between rounded-xl">
-              <label className="text-sm text-medium text-primary-text-purple-light">ends</label>
+              <label className="text-sm text-medium text-primary-text-purple-light">
+                ends
+              </label>
               <input
                 type="datetime-local"
                 className="bg-transparent text-medium text-primary-text-purple-dark"
@@ -65,7 +75,9 @@ const Create: NextPage = () => {
               />
             </div>
             <div className="w-full px-4 items-center py-3 bg-[#F1EDF9] flex justify-between rounded-xl">
-              <label className="text-sm text-medium text-primary-text-purple-light">hosted by</label>
+              <label className="text-sm text-medium text-primary-text-purple-light">
+                hosted by
+              </label>
               <input
                 type="text"
                 className="bg-transparent text-medium text-primary-text-purple-dark"
@@ -74,7 +86,9 @@ const Create: NextPage = () => {
               />
             </div>
             <div className="w-full px-4 items-center py-3 bg-[#F1EDF9] flex justify-between rounded-xl">
-              <label className="text-sm text-medium text-primary-text-purple-light">at</label>
+              <label className="text-sm text-medium text-primary-text-purple-light">
+                at
+              </label>
               <input
                 type="text"
                 className="bg-transparent text-medium text-primary-text-purple-dark"

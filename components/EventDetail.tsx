@@ -16,8 +16,14 @@ export default function EventDetail(props: EventDetailProps) {
     <div className="flex gap-5 items-center">
       <img src={props.iconSrc} />
       <div>
-        <p className="text-primary-text-purple-light font-bold">{props.label}</p>
-        {props.children ? props.children : <p className="text-[#4F4F4F] text-sm">{props.caption}</p>}
+        <p className="text-primary-text-purple-light font-bold">
+          {props.label}
+        </p>
+        {props.children ? (
+          props.children
+        ) : (
+          <p className="text-[#4F4F4F] text-sm">{props.caption}</p>
+        )}
       </div>
     </div>
   );

@@ -23,7 +23,10 @@ const Event: NextPage = () => {
   console.log(data);
 
   return (
-    <Layout title={data.name} description={`${getReadableDate(data.start)} | Hosted by ${data.host}`}>
+    <Layout
+      title={data.name}
+      description={`${getReadableDate(data.start)} | Hosted by ${data.host}`}
+    >
       <main className="block bg-[#FBFAFF]">
         {data.image ? (
           <img src={data.image} className="object-cover w-full aspect-square" />
@@ -33,7 +36,9 @@ const Event: NextPage = () => {
 
         <div className="flex flex-col px-5 py-3 gap-8">
           <div className="flex flex-col gap-1">
-            <h1 className="font-bold text-3xl text-primary-text-purple-dark">{data.name}</h1>
+            <h1 className="font-bold text-3xl text-primary-text-purple-dark">
+              {data.name}
+            </h1>
             <h2 className="text-[#828282]">
               Hosted by <span className="font-bold">{data.host}</span>
             </h2>
@@ -45,7 +50,9 @@ const Event: NextPage = () => {
               label={getReadableDate(data.start)}
               children={
                 <p className="text-[#4F4F4F] text-sm">
-                  to <span className="font-bold">{getReadableDate(data.end)}</span> UTC +10
+                  to{" "}
+                  <span className="font-bold">{getReadableDate(data.end)}</span>{" "}
+                  UTC +10
                 </p>
               }
             />

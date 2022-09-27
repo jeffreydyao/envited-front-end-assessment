@@ -19,7 +19,14 @@ export default function Layout(props: LayoutProps) {
     <div>
       <Head>
         <title>{props.title ? props.title : "Binvited"}</title>
-        <meta name="description" content={props.description ? props.description : "Obviously superior to Envited"} />
+        <meta
+          name="description"
+          content={
+            props.description
+              ? props.description
+              : "Obviously superior to Envited"
+          }
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
