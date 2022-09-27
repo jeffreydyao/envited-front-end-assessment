@@ -1,7 +1,18 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Create: NextPage = () => {
+  const [startDate, setStartDate] = useState<string>();
+  const [endDate, setEndDate] = useState<string>();
+  const [host, setHost] = useState<string>();
+  const [location, setLocation] = useState<string>();
+
+  useEffect(() => {
+    console.log(startDate, endDate, host, location);
+  }, [startDate, endDate, host, location]);
+
   return (
     <div>
       <Head>
@@ -28,6 +39,7 @@ const Create: NextPage = () => {
             <input
               type="datetime-local"
               className="bg-transparent text-medium text-primary-text-purple-dark"
+              onChange={(e) => setStartDate(e.target.value)}
             />
           </div>
           <div className="w-full px-4 items-center py-3 bg-[#F1EDF9] flex justify-between rounded-xl">
@@ -37,6 +49,7 @@ const Create: NextPage = () => {
             <input
               type="datetime-local"
               className="bg-transparent text-medium text-primary-text-purple-dark"
+              onChange={(e) => setEndDate(e.target.value)}
             />
           </div>
           <div className="w-full px-4 items-center py-3 bg-[#F1EDF9] flex justify-between rounded-xl">
@@ -47,6 +60,7 @@ const Create: NextPage = () => {
               type="text"
               className="bg-transparent text-medium text-primary-text-purple-dark"
               placeholder="corn kid"
+              onChange={(e) => setHost(e.target.value)}
             />
           </div>
           <div className="w-full px-4 items-center py-3 bg-[#F1EDF9] flex justify-between rounded-xl">
@@ -57,6 +71,7 @@ const Create: NextPage = () => {
               type="text"
               className="bg-transparent text-medium text-primary-text-purple-dark"
               placeholder="my crib"
+              onChange={(e) => setLocation(e.target.value)}
             />
           </div>
         </div>
@@ -64,6 +79,20 @@ const Create: NextPage = () => {
         <div className="aspect-[3/2] w-full bg-slate-50" />
 
         <input type="file" />
+
+        <Link
+          href={{
+            pathname: "/event",
+            query: {
+              start: startDate,
+              end: endDate,
+              host: host,
+              location: location,
+            },
+          }}
+        >
+          <a>Next</a>
+        </Link>
       </main>
     </div>
   );
