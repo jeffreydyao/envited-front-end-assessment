@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/future/image";
 
 const Home: NextPage = () => {
   return (
@@ -27,7 +26,11 @@ const Home: NextPage = () => {
             media.
           </p>
         </div>
-        <img src="/app.svg" className="w-40" />
+        <img
+          src="/app.svg"
+          className="w-40"
+          alt="Screenshot of the Binvited app"
+        />
 
         <button className="px-5 py-4 font-bold text-white bg-gradient-to-r from-primary-envited-purple to-primary-envited-pink rounded-xl hover:brightness-105 transition-all">
           🎉 Create my event
